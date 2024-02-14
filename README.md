@@ -28,5 +28,7 @@ Node v14.17.6 or later installed in the machine
 2. View a list of all the messages
 
 ### Video walkthrough
-https://github.com/swathyjayaseelan/MessageBoardApp/assets/13806470/720859f1-14f9-4f67-b802-e64d75b4b3f4
+
+https://github.com/swathyjayaseelan/MessageBoardApp/assets/13806470/e9a66535-23b3-43c7-8aa1-1869a12c653f
+
 
