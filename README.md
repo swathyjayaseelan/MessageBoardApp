@@ -11,7 +11,7 @@ For setting up the project locally, please clone the repo and follow the below s
 
 ### Prerequisites
 
-1. Node v14.17.6 or later installed in the machine
+Node v14.17.6 or later installed in the machine
 
 ### Back-end
 1. Run npm install
