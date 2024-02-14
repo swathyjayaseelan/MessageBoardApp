@@ -21,7 +21,7 @@ Node v14.17.6 or later installed in the machine
 ### Front-end
 1. Run npm install
 2. Run npm run dev
-3. The application opens in localhost:5173
+3. Open the browser and navigate to localhost:5173
 
 ### Features
 1. Create a new message by providing name and message
