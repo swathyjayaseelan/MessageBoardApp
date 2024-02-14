@@ -14,13 +14,13 @@ For setting up the project locally, please clone the repo and follow the below s
 Node v14.17.6 or later installed in the machine
 
 ### Back-end
-1. Run npm install
-2. Run npm run start
+1. Run "npm install"
+2. Run "npm run start"
 3. The server runs in port 8000
 
 ### Front-end
-1. Run npm install
-2. Run npm run dev
+1. Run "npm install"
+2. Run "npm run dev"
 3. Open the browser and navigate to localhost:5173
 
 ### Features
