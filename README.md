@@ -2,8 +2,8 @@
 
 This repository contains the source code for a Message Board application built with:
 
-1. Frontend: React and TypeScript
-2. Backend: Node.js and TypeScript
+1. Frontend: React + TypeScript
+2. Backend: Node.js + TypeScript
 
 ### Getting Started
 
