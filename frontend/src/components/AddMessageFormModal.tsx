@@ -7,11 +7,11 @@ interface Props {
   handleClose: any;
 }
 
-function AddMessageFormModal(props: Props) {
+export function AddMessageFormModal(props: Props) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
-  onsubmit = (e) => {
+  const onsubmit = (e) => {
     e.preventDefault();
     return MessageService.create({
       name: name,
@@ -30,7 +30,7 @@ function AddMessageFormModal(props: Props) {
           <Modal.Title>Add a new message</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={onsubmit}>
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -65,6 +65,4 @@ function AddMessageFormModal(props: Props) {
       </Modal>
     </>
   );
-}
-
-export default AddMessageFormModal;
+};

@@ -1,22 +1,22 @@
-import { INewMessage } from "../components/Message.type";
+import { INewMessage } from "../interfaces/Message";
 
 // GET api/messages
-const getAll = () => {
-  return fetch("api/messages")
-    .then((response) => response.json())
-    .then((data) => data);
+const getAll = async () => {
+  const response = await fetch("api/messages");
+  const data = await response.json();
+  return data;
 };
 
 // POST /api/messages
-const create = (data: INewMessage) => {
+const create = async (data: INewMessage) => {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   };
-  return fetch("/api/messages", requestOptions)
-    .then((response) => response.json())
-    .then((data) => data);
+  const response = await fetch("/api/messages", requestOptions);
+  const data_1 = await response.json();
+  return data_1;
 };
 
 const MessageService = {

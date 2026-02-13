@@ -7,9 +7,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+// Store the messages in a local object
 let messages = {};
+// Get all messages
 export const findAll = () => __awaiter(void 0, void 0, void 0, function* () { return Object.values(messages); });
+// Add new message into the object
 export const create = (newMessage) => __awaiter(void 0, void 0, void 0, function* () {
+    // Unique value for id
     const id = new Date().valueOf();
     messages[id] = Object.assign({ id }, newMessage);
     return messages[id];

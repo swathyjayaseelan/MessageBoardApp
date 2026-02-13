@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import express from "express";
 import * as MessageService from "./messages.service.js";
 export const messagesRouter = express.Router();
+// GET route
 messagesRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const messages = yield MessageService.findAll();
@@ -19,6 +20,7 @@ messagesRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function
         res.status(500).send(e);
     }
 }));
+// CREATE Message
 messagesRouter.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const message = req.body;
