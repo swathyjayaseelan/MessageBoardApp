@@ -11,7 +11,7 @@ export function AddMessageFormModal(props: Props) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
-  const onsubmit = (e) => {
+  const onsubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     return MessageService.create({
       name: name,

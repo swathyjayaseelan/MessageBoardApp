@@ -3,7 +3,7 @@
 This repository contains the source code for a Message Board application built with:
 
 1. Frontend: React + TypeScript
-2. Backend: Node.js + TypeScript
+2. Backend: Express.js + TypeScript
 
 ### Getting Started
 
@@ -11,17 +11,20 @@ For setting up the project locally, please clone the repo and follow the below s
 
 ### Prerequisites
 
-Node v14.17.6 or later installed in the machine
+Node v18 or later installed on the machine
 
-### Back-end
-1. Run "npm install"
-2. Run "npm run start"
-3. The server runs in port 8000
+### Docker
 
-### Front-end
-1. Run "npm install"
-2. Run "npm run dev"
-3. Open the browser and navigate to localhost:5173
+To run the application using Docker:
+
+1. Make sure Docker and Docker Compose are installed
+2. Run `docker-compose up --build`
+3. Open the browser and navigate to http://localhost:5173
+
+To stop the containers:
+```
+docker-compose down
+```
 
 ### Features
 1. Create a new message by providing name and message

@@ -15,10 +15,9 @@ export function MessageList() {
   };
   const handleShowModal = () => setShowModal(true);
 
-  const fetchData = () => {
-    return MessageService.getAll().then((data) => {
-      setMessages(data);
-    });
+  const fetchData = async () => {
+    const data = await MessageService.getAll();
+    setMessages(data);
   };
 
   useEffect(() => {
