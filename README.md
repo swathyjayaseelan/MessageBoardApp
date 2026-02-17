@@ -26,6 +26,34 @@ To stop the containers:
 docker-compose down
 ```
 
+### Local Development
+
+#### Backend
+```
+cd backend
+npm install
+npm run serve
+```
+The server runs on port 8000.
+
+To run tests:
+```
+npm test
+```
+
+#### Frontend
+```
+cd frontend
+npm install
+npm run dev
+```
+Open the browser and navigate to http://localhost:5173
+
+To run tests:
+```
+npm test
+```
+
 ### Features
 1. Create a new message by providing name and message
 2. View a list of all the messages
