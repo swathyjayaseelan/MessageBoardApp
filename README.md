@@ -64,8 +64,6 @@ cd backend && npm test
 # Frontend tests
 cd frontend && npm test
 
-# Frontend coverage
-cd frontend && npm run test:coverage
 ```
 
 ### Project Structure
