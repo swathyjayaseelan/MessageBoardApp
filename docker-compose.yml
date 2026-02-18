@@ -1,14 +1,11 @@
 services:
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    build: ./backend
     ports:
       - "8000:8000"
-    environment:
-      - NODE_ENV=production
+    volumes:
+      - ./backend/data:/app/data
     restart: unless-stopped
-
   frontend:
     build:
       context: ./frontend

@@ -1,64 +1,108 @@
-## Message Board Application (React + Node.js + TypeScript)
+## Message Board Application
 
-This repository contains the source code for a Message Board application built with:
+A full-stack message board application built with modern technologies.
 
-1. Frontend: React + TypeScript
-2. Backend: Express.js + TypeScript
+### Tech Stack
 
-### Getting Started
+| Layer | Technology |
+|-------|------------|
+| Frontend | React 18, TypeScript, Vite, Bootstrap |
+| Backend | Express.js, TypeScript, Node.js 18 |
+| Database | SQLite |
+| DevOps | Docker, Docker Compose, Nginx |
+| Testing | Vitest, React Testing Library, Supertest |
 
-For setting up the project locally, please clone the repo and follow the below steps
+### Quick Start (Docker)
 
-### Prerequisites
+**Prerequisites:** [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-Node v18 or later installed on the machine
+```bash
+# Clone the repository
+git clone <repo-url>
+cd MessageBoardApp
 
-### Docker
+# Create data directory for SQLite
+mkdir -p backend/data
 
-To run the application using Docker:
-
-1. Make sure Docker and Docker Compose are installed
-2. Run `docker-compose up --build`
-3. Open the browser and navigate to http://localhost:5173
-
-To stop the containers:
+# Build and run
+docker-compose up --build
 ```
+
+Open http://localhost:5173 in your browser.
+
+To stop:
+```bash
 docker-compose down
 ```
 
 ### Local Development
 
+**Prerequisites:** Node.js v18 or later
+
 #### Backend
-```
+```bash
 cd backend
 npm install
 npm run serve
 ```
-The server runs on port 8000.
-
-To run tests:
-```
-npm test
-```
+Server runs on http://localhost:8000
 
 #### Frontend
-```
+```bash
 cd frontend
 npm install
 npm run dev
 ```
-Open the browser and navigate to http://localhost:5173
+App runs on http://localhost:5173
 
-To run tests:
+### Running Tests
+
+```bash
+# Backend tests
+cd backend && npm test
+
+# Frontend tests
+cd frontend && npm test
+
+# Frontend coverage
+cd frontend && npm run test:coverage
 ```
-npm test
+
+### Project Structure
+
+```
+MessageBoardApp/
+├── backend/
+│   ├── src/
+│   │   ├── database/        # SQLite connection
+│   │   ├── interfaces/      # TypeScript types
+│   │   └── messages/        # Routes & services
+│   ├── data/                # SQLite database file
+│   └── Dockerfile
+├── frontend/
+│   ├── src/
+│   │   ├── components/      # React components
+│   │   ├── services/        # API services
+│   │   └── interfaces/      # TypeScript types
+│   └── Dockerfile
+└── docker-compose.yml
 ```
 
 ### Features
-1. Create a new message by providing name and message
-2. View a list of all the messages
 
-### Video walkthrough
+- Create new messages with name and content
+- View all messages in a list
+- Data persists in SQLite database
+- Fully containerized with Docker
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/messages | Get all messages |
+| POST | /api/messages | Create a new message |
+
+### Video Walkthrough
 
 https://github.com/swathyjayaseelan/MessageBoardApp/assets/13806470/e9a66535-23b3-43c7-8aa1-1869a12c653f
 

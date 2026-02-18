@@ -1,24 +1,22 @@
-import { Message, NewMessage } from "../interfaces/message.interface.js";
-import { Messages } from "../interfaces/messages.interface.js";
-
-// Store the messages in a local object
-let messages: Messages = {};
-let nextId = 1;
-
-export const findAll = async (): Promise<Message[]> => Object.values(messages);
-
-export const create = async (newMessage: NewMessage): Promise<Message> => {
-  const id = nextId++;
-
-  messages[id] = {
-    id,
-    ...newMessage,
-  };
-
-  return messages[id];
-};
-
-export const reset = (): void => {
-  messages = {};
-  nextId = 1;
-};
+import { Message, NewMessage } from "../interfaces/message.interface.js";                                                                                                                                           
+  import db from "../database/db.js";                                                                                                                                                                                 
+                                                                                                                                                                                                                      
+  export const findAll = async (): Promise<Message[]> => {                                                                                                                                                            
+    const stmt = db.prepare("SELECT id, name, message FROM messages ORDER BY id DESC");                                                                                                                               
+    return stmt.all() as Message[];                                                                                                                                                                                   
+  };                                                                                                                                                                                                                  
+                                                                                                                                                                                                                      
+  export const create = async (newMessage: NewMessage): Promise<Message> => {                                                                                                                                         
+    const stmt = db.prepare("INSERT INTO messages (name, message) VALUES (?, ?)");                                                                                                                                    
+    const result = stmt.run(newMessage.name, newMessage.message);                                                                                                                                                     
+                                                                                                                                                                                                                      
+    return {                                                                                                                                                                                                          
+      id: result.lastInsertRowid as number,                                                                                                                                                                           
+      ...newMessage,                                                                                                                                                                                                  
+    };                                                                                                                                                                                                                
+  };                                                                                                                                                                                                                  
+                                                                                                                                                                                                                      
+  export const reset = (): void => {                                                                                                                                                                                  
+    db.exec("DELETE FROM messages");                                                                                                                                                                                  
+  };                                                                                                                                                         
+             
