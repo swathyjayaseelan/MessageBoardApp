@@ -18,7 +18,7 @@ A full-stack message board application.
 
 ```bash
 # Clone the repository
-git clone <repo-url>
+git clone "https://github.com/swathyjayaseelan/MessageBoardApp.git"
 cd MessageBoardApp
 
 # Create data directory for SQLite
