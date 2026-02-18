@@ -1,6 +1,6 @@
 ## Message Board Application
 
-A full-stack message board application built with modern technologies.
+A full-stack message board application.
 
 ### Tech Stack
 
@@ -74,16 +74,16 @@ cd frontend && npm run test:coverage
 MessageBoardApp/
 ├── backend/
 │   ├── src/
-│   │   ├── database/        # SQLite connection
-│   │   ├── interfaces/      # TypeScript types
-│   │   └── messages/        # Routes & services
+│   │   ├── database/
+│   │   ├── interfaces/
+│   │   └── messages/
 │   ├── data/                # SQLite database file
 │   └── Dockerfile
 ├── frontend/
 │   ├── src/
-│   │   ├── components/      # React components
-│   │   ├── services/        # API services
-│   │   └── interfaces/      # TypeScript types
+│   │   ├── components/
+│   │   ├── services/
+│   │   └── interfaces/
 │   └── Dockerfile
 └── docker-compose.yml
 ```
