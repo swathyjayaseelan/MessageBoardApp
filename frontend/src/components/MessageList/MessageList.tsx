@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import MessageService from "../../services/MessageService";
 import { IMessage } from "../../interfaces/Message";
-import { AddMessageFormModal } from "../AddMessageFormModal";
+import { NewMessageFormModal } from "../NewMessageFormModal/NewMessageFormModal";
 import "./MessageList.css";
 
 export function MessageList() {
@@ -51,10 +51,10 @@ export function MessageList() {
         </ListGroup>
       </div>
 
-      <AddMessageFormModal
+      <NewMessageFormModal
         showModal={showModal}
         handleClose={handleCloseModal}
-      ></AddMessageFormModal>
+      ></NewMessageFormModal>
     </>
   );
 };

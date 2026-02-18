@@ -1,5 +1,5 @@
-import { Message, NewMessage } from "./message.interface.js";
-import { Messages } from "./messages.interface.js";
+import { Message, NewMessage } from "../interfaces/message.interface.js";
+import { Messages } from "../interfaces/messages.interface.js";
 
 // Store the messages in a local object
 let messages: Messages = {};

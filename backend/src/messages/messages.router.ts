@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { Message, NewMessage } from "./message.interface.js";
+import { Message, NewMessage } from "../interfaces/message.interface.js";
 import * as MessageService from "./messages.service.js";
 
 export const messagesRouter = express.Router();
