@@ -1,22 +1,23 @@
-import { Message, NewMessage } from "../interfaces/message.interface.js";                                                                                                                                           
-  import db from "../database/db.js";                                                                                                                                                                                 
-                                                                                                                                                                                                                      
-  export const findAll = async (): Promise<Message[]> => {                                                                                                                                                            
-    const stmt = db.prepare("SELECT id, name, message FROM messages ORDER BY id DESC");                                                                                                                               
-    return stmt.all() as Message[];                                                                                                                                                                                   
-  };                                                                                                                                                                                                                  
-                                                                                                                                                                                                                      
-  export const create = async (newMessage: NewMessage): Promise<Message> => {                                                                                                                                         
-    const stmt = db.prepare("INSERT INTO messages (name, message) VALUES (?, ?)");                                                                                                                                    
-    const result = stmt.run(newMessage.name, newMessage.message);                                                                                                                                                     
-                                                                                                                                                                                                                      
-    return {                                                                                                                                                                                                          
-      id: result.lastInsertRowid as number,                                                                                                                                                                           
-      ...newMessage,                                                                                                                                                                                                  
-    };                                                                                                                                                                                                                
-  };                                                                                                                                                                                                                  
-                                                                                                                                                                                                                      
-  export const reset = (): void => {                                                                                                                                                                                  
-    db.exec("DELETE FROM messages");                                                                                                                                                                                  
-  };                                                                                                                                                         
-             
+import { Message, NewMessage } from "../interfaces/message.interface.js";
+import db from "../database/db.js";
+
+export const findAll = async (): Promise<Message[]> => {
+  const stmt = db.prepare(
+    "SELECT id, name, message FROM messages ORDER BY id DESC",
+  );
+  return stmt.all() as Message[];
+};
+
+export const create = async (newMessage: NewMessage): Promise<Message> => {
+  const stmt = db.prepare("INSERT INTO messages (name, message) VALUES (?, ?)");
+  const result = stmt.run(newMessage.name, newMessage.message);
+
+  return {
+    id: result.lastInsertRowid as number,
+    ...newMessage,
+  };
+};
+
+export const reset = (): void => {
+  db.exec("DELETE FROM messages");
+};
