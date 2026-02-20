@@ -3,7 +3,7 @@ import request from "supertest";
 import { createApp } from "../app.js";
 import { MessageService } from "../services/message.service.js";
 import Database from "better-sqlite3";
-import { createMessagesRouter } from "../routes/messages.router.js";
+import { createMessagesRouter } from "./messages.router.js";
 
 function createTestDb() {
   const db = new Database(":memory:");

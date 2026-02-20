@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { MessageService } from "../services/message.service.js";
+import { MessageService } from "./message.service.js";
 import Database from "better-sqlite3";
 
 function createTestDb() {

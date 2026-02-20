@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import { IMessage } from "@dto/Message";
 import "./MessageList.css";
