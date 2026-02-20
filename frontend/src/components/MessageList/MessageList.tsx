@@ -1,5 +1,5 @@
 import { ListGroup, Button } from "react-bootstrap";
-import { IMessage } from "@dto/Message";
+import { IMessage } from "@shared/dto/Message";
 import "./MessageList.css";
 interface MessageListViewProps {
   messages: IMessage[];

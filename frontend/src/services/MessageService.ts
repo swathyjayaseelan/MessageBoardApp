@@ -1,4 +1,4 @@
-import { IMessage, INewMessage } from "@dto/Message";
+import { IMessage, INewMessage } from "@shared/dto/Message";
 
 export type FetchFn = typeof fetch; 
 export class MessageService {

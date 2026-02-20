@@ -1,4 +1,4 @@
-import { IMessage, INewMessage } from "@dto/Message.js";
+import { IMessage, INewMessage } from "@shared/dto/Message.js";
 import db from "../database/db.js";
 import Database from "better-sqlite3";
 

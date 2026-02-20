@@ -66,6 +66,7 @@ cd frontend && npm test
 ### API Endpoints
 
 GET: /api/messages - Get all messages
+
 POST: /api/messages - Create a new message
 
 ### Video Walkthrough
