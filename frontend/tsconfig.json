@@ -15,8 +15,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "paths": {                                                                                                                                                                                                      
+        "@dto/*": ["../dto/*"]                                                                                                                                                                                        
+    },
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src"],
+  "include": ["src", "../dto/Message.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

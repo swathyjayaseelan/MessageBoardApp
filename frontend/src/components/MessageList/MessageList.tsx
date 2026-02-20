@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ListGroup, Button } from "react-bootstrap";
-import MessageService from "../../services/MessageService";
-import { IMessage } from "../../interfaces/Message";
 import { NewMessageFormModal } from "../NewMessageFormModal/NewMessageFormModal";
+import { useMessages } from "../../hooks/getMessages";
 import "./MessageList.css";
 
 export function MessageList() {
   const [showModal, setShowModal] = useState(false);
-  const [messages, setMessages] = useState([] as IMessage[]);
+  const { messages, isLoading, error, refetch } = useMessages();
 
   const handleCloseModal = () => {
-    fetchData();
     setShowModal(false);
   };
   const handleShowModal = () => setShowModal(true);
-
-  const fetchData = async () => {
-    const data = await MessageService.getAll();
-    setMessages(data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <>
@@ -37,24 +26,31 @@ export function MessageList() {
             + Message
           </Button>
         </h1>
-        {messages.length === 0 ? <p>No Messages</p> : null}
+        {isLoading && <p>Loading...</p>}   
 
-        <ListGroup variant="flush">
-          {messages.map((message) => (
-            <ListGroup.Item key={message.id}>
-              <div className="ms-2 me-auto">
-                <div className="fw-bold">{message.name}</div>
-                {message.message}
-              </div>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
+        {!isLoading && error !== null && <p>Error loading messages</p>}  
+
+        {!isLoading && messages.length === 0 ? <p>No Messages</p> : null}
+
+        {!isLoading && error === null && messages.length > 0 && (
+          <ListGroup variant="flush">
+            {messages.map((message) => (
+              <ListGroup.Item key={message.id}>
+                <div className="ms-2 me-auto">
+                  <div className="fw-bold">{message.name}</div>
+                  {message.message}
+                </div>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        )}
       </div>
 
       <NewMessageFormModal
         showModal={showModal}
         handleClose={handleCloseModal}
-      ></NewMessageFormModal>
+        onMessageCreated={refetch}
+      />
     </>
   );
-};
+}

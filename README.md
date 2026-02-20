@@ -4,13 +4,11 @@ A full-stack message board application.
 
 ### Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | React 18, TypeScript, Vite, Bootstrap |
-| Backend | Express.js, TypeScript, Node.js 18 |
-| Database | SQLite |
-| DevOps | Docker, Docker Compose, Nginx |
-| Testing | Vitest, React Testing Library, Supertest |
+Frontend: React 18, TypeScript, Vite, Bootstrap
+Backend: Express.js, TypeScript, Node.js 18
+Database: SQLite
+DevOps: Docker, Docker Compose, Nginx
+Testing: Vitest, React Testing Library, Supertest
 
 ### Quick Start (Docker)
 
@@ -66,26 +64,6 @@ cd frontend && npm test
 
 ```
 
-### Project Structure
-
-```
-MessageBoardApp/
-├── backend/
-│   ├── src/
-│   │   ├── database/
-│   │   ├── interfaces/
-│   │   └── messages/
-│   ├── data/                # SQLite database file
-│   └── Dockerfile
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── services/
-│   │   └── interfaces/
-│   └── Dockerfile
-└── docker-compose.yml
-```
-
 ### Features
 
 - Create new messages with name and content
@@ -95,10 +73,8 @@ MessageBoardApp/
 
 ### API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/messages | Get all messages |
-| POST | /api/messages | Create a new message |
+GET: /api/messages - Get all messages
+POST: /api/messages - Create a new message
 
 ### Video Walkthrough
 

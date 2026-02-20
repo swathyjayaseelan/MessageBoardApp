@@ -1,13 +1,11 @@
-import { INewMessage } from "../interfaces/Message";
+import { INewMessage } from "../../../dto/Message";
 
-// GET api/messages
 const getAll = async () => {
   const response = await fetch("api/messages");
   const data = await response.json();
   return data;
 };
 
-// POST /api/messages
 const create = async (data: INewMessage) => {
   const requestOptions = {
     method: "POST",
@@ -15,8 +13,8 @@ const create = async (data: INewMessage) => {
     body: JSON.stringify(data),
   };
   const response = await fetch("/api/messages", requestOptions);
-  const data_1 = await response.json();
-  return data_1;
+  const result = await response.json();
+  return result;
 };
 
 const MessageService = {

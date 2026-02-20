@@ -5,32 +5,33 @@ import MessageService from "../../services/MessageService";
 interface Props {
   showModal: boolean;
   handleClose: any;
+  onMessageCreated: () => void;  
 }
 
-export function NewMessageFormModal(props: Props) {
+export function NewMessageFormModal({ showModal, handleClose, onMessageCreated }: Props) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
-  const onsubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    return MessageService.create({
+    await MessageService.create({
       name: name,
       message: message,
-    }).then(() => {
-      setName("");
-      setMessage("");
-      props.handleClose();
     });
+    setName("");
+    setMessage("");
+    onMessageCreated();
+    handleClose();
   };
 
   return (
     <>
-      <Modal show={props.showModal} onHide={props.handleClose}>
+      <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add a new message</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={onsubmit}>
+          <Form onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -49,7 +50,7 @@ export function NewMessageFormModal(props: Props) {
                 rows={3}
               />
             </Form.Group>
-            <Button variant="secondary" onClick={props.handleClose}>
+            <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
             <Button

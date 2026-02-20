@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import { messagesRouter } from "./messages/messages.router.js";
+import { messagesRouter } from "./routes/messages.router.js";
 
 export const createApp = (): Express => {
   const app: Express = express();
