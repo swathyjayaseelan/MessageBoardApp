@@ -65,9 +65,34 @@ cd frontend && npm test
 
 ### API Endpoints
 
-GET: /api/messages - Get all messages
+**GET** `/api/messages` - Get all messages
 
-POST: /api/messages - Create a new message
+Response:
+```json
+[
+  { "id": 1, "name": "John", "message": "Hello world" },
+  { "id": 2, "name": "Jane", "message": "Hi there" }
+]
+```
+
+**POST** `/api/messages` - Create a new message
+
+Request:
+```json
+{
+  "name": "John",
+  "message": "Hello"
+}
+```
+
+Response:
+```json
+{
+  "id": 1,
+  "name": "John",
+  "message": "Hello"
+}
+```
 
 ### Video Walkthrough
 
