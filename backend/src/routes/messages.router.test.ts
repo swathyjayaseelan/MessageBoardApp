@@ -4,16 +4,11 @@ import { createApp } from "../app.js";
 import { MessageService } from "../services/message.service.js";
 import Database from "better-sqlite3";
 import { createMessagesRouter } from "./messages.router.js";
+import { initializeDb } from "../database/db.js";
 
 function createTestDb() {
-  const db = new Database(":memory:");
-  db.exec(`                                                                                                                                                                                                         
-      CREATE TABLE IF NOT EXISTS messages (                                                                                                                                                                           
-        id INTEGER PRIMARY KEY AUTOINCREMENT,                                                                                                                                                                         
-        name TEXT NOT NULL,                                                                                                                                                                                           
-        message TEXT NOT NULL                                                                                                                                                                                         
-      )                                                                                                                                                                                                               
-    `);
+  const db = new Database(":memory:");                                                                                                                                                                              
+  initializeDb(db);                                                                                                                                                                                                 
   return db;
 }
 
