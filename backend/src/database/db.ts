@@ -16,7 +16,8 @@ export function initializeDb(db: Database.Database): void {
     `);
 }
 
-const dbPath = process.env.DB_PATH || path.join(__dirname, "../../data/messages.db");
+const dbPath =
+  process.env.DB_PATH || path.join(__dirname, "../../data/messages.db");
 
 const dataDir = path.dirname(dbPath);
 if (!fs.existsSync(dataDir)) {

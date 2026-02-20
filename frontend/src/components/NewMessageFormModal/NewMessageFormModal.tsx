@@ -8,7 +8,11 @@ interface Props {
   onMessageCreated: () => void;
 }
 
-export function NewMessageFormModal({ showModal, handleClose, onMessageCreated }: Props) {
+export function NewMessageFormModal({
+  showModal,
+  handleClose,
+  onMessageCreated,
+}: Props) {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 

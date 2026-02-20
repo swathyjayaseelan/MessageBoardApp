@@ -1,6 +1,8 @@
 import express, { Request, Response, Router } from "express";
 import { IMessage, INewMessage } from "@shared/dto/Message.js";
-import DefaultMessageService, { MessageService } from "../services/message.service.js";
+import DefaultMessageService, {
+  MessageService,
+} from "../services/message.service.js";
 
 export function createMessagesRouter(messageService: MessageService): Router {
   const router = express.Router();

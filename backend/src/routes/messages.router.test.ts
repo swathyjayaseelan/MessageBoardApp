@@ -38,8 +38,14 @@ describe("Messages API", () => {
 
       expect(response.status).toBe(200);
       expect(response.body).toHaveLength(2);
-      expect(response.body[0]).toMatchObject({ name: "Jane", message: "Hi there" });
-      expect(response.body[1]).toMatchObject({ name: "John", message: "Hello" });
+      expect(response.body[0]).toMatchObject({
+        name: "Jane",
+        message: "Hi there",
+      });
+      expect(response.body[1]).toMatchObject({
+        name: "John",
+        message: "Hello",
+      });
     });
   });
 

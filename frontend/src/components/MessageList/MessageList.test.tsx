@@ -9,7 +9,14 @@ describe("MessageList", () => {
   });
 
   it("should display 'No Messages' when list is empty", async () => {
-    render(<MessageList messages={[]} isLoading={false} error={null} onAddMessage={() => {}} />);
+    render(
+      <MessageList
+        messages={[]}
+        isLoading={false}
+        error={null}
+        onAddMessage={() => {}}
+      />,
+    );
 
     await waitFor(() => {
       expect(screen.getByText("No Messages")).toBeInTheDocument();
@@ -17,7 +24,14 @@ describe("MessageList", () => {
   });
 
   it("should display loading state", () => {
-    render(<MessageList messages={[]} isLoading={true} error={null} onAddMessage={() => {}} />);
+    render(
+      <MessageList
+        messages={[]}
+        isLoading={true}
+        error={null}
+        onAddMessage={() => {}}
+      />,
+    );
 
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
@@ -29,7 +43,7 @@ describe("MessageList", () => {
         isLoading={false}
         error={new Error("Failed")}
         onAddMessage={() => {}}
-      />
+      />,
     );
 
     expect(screen.getByText("Error loading messages")).toBeInTheDocument();
@@ -42,7 +56,12 @@ describe("MessageList", () => {
     ];
 
     render(
-      <MessageList messages={messages} isLoading={false} error={null} onAddMessage={() => {}} />
+      <MessageList
+        messages={messages}
+        isLoading={false}
+        error={null}
+        onAddMessage={() => {}}
+      />,
     );
 
     expect(screen.getByText("John")).toBeInTheDocument();
@@ -56,7 +75,12 @@ describe("MessageList", () => {
     const user = userEvent.setup();
 
     render(
-      <MessageList messages={[]} isLoading={false} error={null} onAddMessage={onAddMessage} />
+      <MessageList
+        messages={[]}
+        isLoading={false}
+        error={null}
+        onAddMessage={onAddMessage}
+      />,
     );
 
     await user.click(screen.getByText("+ Message"));
