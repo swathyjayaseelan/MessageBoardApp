@@ -1,25 +1,26 @@
-import { INewMessage } from "../../../dto/Message";
+import { IMessage, INewMessage } from "@dto/Message";
 
-const getAll = async () => {
-  const response = await fetch("api/messages");
-  const data = await response.json();
-  return data;
-};
+export type FetchFn = typeof fetch; 
+export class MessageService {
+  private fetchFn: FetchFn;
 
-const create = async (data: INewMessage) => {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  };
-  const response = await fetch("/api/messages", requestOptions);
-  const result = await response.json();
-  return result;
-};
+  constructor(fetchFn: FetchFn = fetch) {
+    this.fetchFn = fetchFn.bind(window);
+  }
 
-const MessageService = {
-  getAll,
-  create,
-};
+  async getAll(): Promise<IMessage[]> {
+    const response = await this.fetchFn("api/messages");
+    return response.json();
+  }
 
-export default MessageService;
+  async create(data: INewMessage): Promise<IMessage> {
+    const response = await this.fetchFn("/api/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    return response.json();
+  }
+}
+
+export default new MessageService();

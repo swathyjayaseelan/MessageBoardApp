@@ -1,9 +1,9 @@
-import { MessageList } from "./components/MessageList/MessageList";
+import { MessageListContainer } from "./containers/MessageListContainer/MessageListContainer";
 
 function App() {
   return (
     <div>
-      <MessageList />
+      <MessageListContainer />
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import type { IMessage } from "@dto/Message";
-import MessageService from "../services/MessageService";
+import DefaultMessageService, { MessageService } from "../services/MessageService";                                                                                                                                 
 
-export function useMessages() {
+export function useMessages(messageService: MessageService = DefaultMessageService) {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
@@ -12,7 +12,7 @@ export function useMessages() {
     setError(null);
 
     try {
-      const data = await MessageService.getAll();
+      const data = await messageService.getAll();
       setMessages(data);
     } catch (e) {
       setError(e);

@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { ListGroup, Button } from "react-bootstrap";
-import { NewMessageFormModal } from "../NewMessageFormModal/NewMessageFormModal";
-import { useMessages } from "../../hooks/getMessages";
+import { IMessage } from "@dto/Message";
 import "./MessageList.css";
+interface MessageListViewProps {
+  messages: IMessage[];
+  isLoading: boolean;
+  error: unknown;
+  onAddMessage: () => void;
+}
 
-export function MessageList() {
-  const [showModal, setShowModal] = useState(false);
-  const { messages, isLoading, error, refetch } = useMessages();
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-  const handleShowModal = () => setShowModal(true);
-
+export function MessageList({
+  messages,
+  isLoading,
+  error,
+  onAddMessage,
+}: MessageListViewProps) {
   return (
     <>
       <div className="container">
@@ -21,14 +23,14 @@ export function MessageList() {
           <Button
             variant="primary"
             className="float-end m-1 p-2"
-            onClick={handleShowModal}
+            onClick={onAddMessage}
           >
             + Message
           </Button>
         </h1>
-        {isLoading && <p>Loading...</p>}   
+        {isLoading && <p>Loading...</p>}
 
-        {!isLoading && error !== null && <p>Error loading messages</p>}  
+        {!isLoading && error !== null && <p>Error loading messages</p>}
 
         {!isLoading && messages.length === 0 ? <p>No Messages</p> : null}
 
@@ -45,12 +47,6 @@ export function MessageList() {
           </ListGroup>
         )}
       </div>
-
-      <NewMessageFormModal
-        showModal={showModal}
-        handleClose={handleCloseModal}
-        onMessageCreated={refetch}
-      />
     </>
   );
 }

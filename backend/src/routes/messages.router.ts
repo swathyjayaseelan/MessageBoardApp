@@ -1,29 +1,31 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, Router } from "express";
 import { IMessage, INewMessage } from "@dto/message.js";
-import MessageService from "../services/messages.service.js"; 
+import DefaultMessageService, { MessageService } from "../services/message.service.js";
 
-export const messagesRouter = express.Router();
+export function createMessagesRouter(messageService: MessageService): Router {
+  const router = express.Router();
+  router.get("/", async (req: Request, res: Response) => {
+    try {
+      const messages: IMessage[] = await messageService.findAll();
 
-// GET route
-messagesRouter.get("/", async (req: Request, res: Response) => {
-  try {
-    const messages: IMessage[] = await MessageService.findAll();
+      res.status(200).send(messages);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  });
 
-    res.status(200).send(messages);
-  } catch (e) {
-    res.status(500).send(e);
-  }
-});
+  router.post("/", async (req: Request, res: Response) => {
+    try {
+      const message: INewMessage = req.body;
 
-// CREATE Message
-messagesRouter.post("/", async (req: Request, res: Response) => {
-  try {
-    const message: INewMessage = req.body;
+      const newMessage = await messageService.create(message);
 
-    const newMessage = await MessageService.create(message);
+      res.status(201).json(newMessage);
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  });
+  return router;
+}
 
-    res.status(201).json(newMessage);
-  } catch (e) {
-    res.status(500).send(e);
-  }
-});
+export const messagesRouter = createMessagesRouter(DefaultMessageService);

@@ -1,7 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
 /// <reference types="vitest/config" />
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 export default defineConfig({
   server: {
     proxy: {
@@ -9,9 +8,9 @@ export default defineConfig({
     },
   },
   plugins: [react()],
-   test: {                                                                                                                                                                                                           
+  test: {                                                                                                                                                                                                           
       globals: true,                                                                                                                                                                                                  
       environment: "happy-dom",                                                                                                                                                                                           
-      setupFiles: "./src/test/setup.ts",                                                                                                                                                                              
+      setupFiles: "./src/_tests_/setup.ts",                                                                                                                                                                              
     },    
 })

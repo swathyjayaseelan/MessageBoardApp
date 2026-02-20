@@ -1,8 +1,8 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
-import MessagesService from "../services/messages.service.js";
+import { describe, it, expect, beforeEach } from "vitest";
+import { MessageService } from "../services/message.service.js";
+import Database from "better-sqlite3";
 
-vi.mock("../database/db.js", () => {
-  const Database = require("better-sqlite3");
+function createTestDb() {
   const db = new Database(":memory:");
   db.exec(`                                                                                                                                                                                                         
       CREATE TABLE IF NOT EXISTS messages (                                                                                                                                                                           
@@ -11,25 +11,28 @@ vi.mock("../database/db.js", () => {
         message TEXT NOT NULL                                                                                                                                                                                         
       )                                                                                                                                                                                                               
     `);
-  return { default: db };
-});
+  return db;
+}
 
 describe("MessageService", () => {
+  let db: Database.Database;
+  let service: MessageService;
   beforeEach(() => {
-    MessagesService.reset();
+    db = createTestDb();
+    service = new MessageService(db);
   });
 
   describe("findAll", () => {
     it("should return an empty array when no messages exist", async () => {
-      const messages = await MessagesService.findAll();
+      const messages = await service.findAll();
       expect(messages).toEqual([]);
     });
 
     it("should return all created messages", async () => {
-      await MessagesService.create({ name: "John", message: "Hello" });
-      await MessagesService.create({ name: "Jane", message: "Hi" });
+      await service.create({ name: "John", message: "Hello" });
+      await service.create({ name: "Jane", message: "Hi" });
 
-      const messages = await MessagesService.findAll();
+      const messages = await service.findAll();
 
       expect(messages).toHaveLength(2);
     });
@@ -39,7 +42,7 @@ describe("MessageService", () => {
     it("should create a message with an id", async () => {
       const newMessage = { name: "Test", message: "Test message" };
 
-      const created = await MessagesService.create(newMessage);
+      const created = await service.create(newMessage);
 
       expect(created.id).toBeDefined();
       expect(created.name).toBe("Test");
@@ -47,11 +50,11 @@ describe("MessageService", () => {
     });
 
     it("should assign unique ids to each message", async () => {
-      const message1 = await MessagesService.create({
+      const message1 = await service.create({
         name: "A",
         message: "1",
       });
-      const message2 = await MessagesService.create({
+      const message2 = await service.create({
         name: "B",
         message: "2",
       });
@@ -62,10 +65,10 @@ describe("MessageService", () => {
 
   describe("reset", () => {
     it("should clear all messages", async () => {
-      await MessagesService.create({ name: "Test", message: "Message" });
-      MessagesService.reset();
+      await service.create({ name: "Test", message: "Message" });
+      service.reset();
 
-      const messages = await MessagesService.findAll();
+      const messages = await service.findAll();
 
       expect(messages).toEqual([]);
     });
