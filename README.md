@@ -2,14 +2,6 @@
 
 A full-stack message board application.
 
-### Tech Stack
-
-Frontend: React 18, TypeScript, Vite, Bootstrap
-Backend: Express.js, TypeScript, Node.js 18
-Database: SQLite
-DevOps: Docker, Docker Compose, Nginx
-Testing: Vitest, React Testing Library, Supertest
-
 ### Quick Start (Docker)
 
 **Prerequisites:** [Docker Desktop](https://www.docker.com/products/docker-desktop)
