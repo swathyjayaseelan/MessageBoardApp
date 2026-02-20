@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import type { IMessage } from "@dto/Message.dto";
+import type { IMessage } from "@dto/Message";
 import DefaultMessageService, { MessageService } from "../services/MessageService";                                                                                                                                 
 
 export function useMessages(messageService: MessageService = DefaultMessageService) {
