@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import type { IMessage } from "@shared/dto/Message";
-import DefaultMessageService, { MessageService } from "../services/MessageService";                                                                                                                                 
+import DefaultMessageService, { MessageService } from "../services/MessageService";
 
 export function useMessages(messageService: MessageService = DefaultMessageService) {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -23,7 +23,7 @@ export function useMessages(messageService: MessageService = DefaultMessageServi
   }, []);
 
   useEffect(() => {
-     fetchMessages();
+    fetchMessages();
   }, [fetchMessages]);
 
   return { messages, isLoading, error, refetch: fetchMessages };

@@ -5,7 +5,7 @@ import MessageService from "../../services/MessageService";
 interface Props {
   showModal: boolean;
   handleClose: any;
-  onMessageCreated: () => void;  
+  onMessageCreated: () => void;
 }
 
 export function NewMessageFormModal({ showModal, handleClose, onMessageCreated }: Props) {
@@ -66,4 +66,4 @@ export function NewMessageFormModal({ showModal, handleClose, onMessageCreated }
       </Modal>
     </>
   );
-};
+}

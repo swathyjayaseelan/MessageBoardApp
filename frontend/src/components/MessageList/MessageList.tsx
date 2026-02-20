@@ -8,22 +8,13 @@ interface MessageListViewProps {
   onAddMessage: () => void;
 }
 
-export function MessageList({
-  messages,
-  isLoading,
-  error,
-  onAddMessage,
-}: MessageListViewProps) {
+export function MessageList({ messages, isLoading, error, onAddMessage }: MessageListViewProps) {
   return (
     <>
       <div className="container">
         <h1>
           Messages
-          <Button
-            variant="primary"
-            className="float-end m-1 p-2"
-            onClick={onAddMessage}
-          >
+          <Button variant="primary" className="float-end m-1 p-2" onClick={onAddMessage}>
             + Message
           </Button>
         </h1>

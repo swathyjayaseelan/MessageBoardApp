@@ -4,8 +4,8 @@ import Database from "better-sqlite3";
 import { initializeDb } from "../database/db.js";
 
 function createTestDb() {
-  const db = new Database(":memory:");                                                                                                                                                                              
-  initializeDb(db);                                                                                                                                                                                                 
+  const db = new Database(":memory:");
+  initializeDb(db);
   return db;
 }
 

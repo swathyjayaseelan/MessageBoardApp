@@ -1,6 +1,6 @@
 import { IMessage, INewMessage } from "@shared/dto/Message";
 
-export type FetchFn = typeof fetch; 
+export type FetchFn = typeof fetch;
 export class MessageService {
   private fetchFn: FetchFn;
 

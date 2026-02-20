@@ -4,4 +4,4 @@ export interface IMessage {
   message: string;
 }
 
-export interface INewMessage extends Omit<IMessage, "id"> {}                                                                                                                                                        
+export interface INewMessage extends Omit<IMessage, "id"> {}
